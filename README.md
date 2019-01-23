@@ -143,7 +143,7 @@ Valid trajectories
 The car is able to drive at least 4.32 miles without incident.
 I ran the simulator for 20 miles without incidents:
 
-20 miles(pathplanningsim25miles.png)
+20 miles(PathPlanningSim25MilesDrive.png)
 
 The car drives according to the speed limit.
 No speed limit red message was seen.
