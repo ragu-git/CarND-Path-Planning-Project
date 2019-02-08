@@ -113,7 +113,7 @@ cmake and make!
 Overview
 In this project, we need to implement a path planning algorithms to drive a car on a highway on a simulator provided by Udacity(the simulator could be downloaded here). The simulator sends car telemetry information (car's position and velocity) and sensor fusion information about the rest of the cars in the highway (Ex. car id, velocity, position). It expects a set of points spaced in time at 0.02 seconds representing the car's trajectory. The communication between the simulator and the path planner is done using WebSocket. The path planner uses the uWebSockets WebSocket implementation to handle this communication. Udacity provides a seed project to start from on this project (here).
 
-Prerequisites
+## Prerequisites
 The project has the following dependencies (from Udacity's seed project):
 
 cmake >= 3.5
@@ -138,7 +138,7 @@ Now the path planner is running and listening on port 4567 for messages from the
 
 Click the "Select" button and hope for the best on the highway... well... no really... we are not catching, aren't we? At the beginning I did, but now it works!
 
-Rubic points
+## Rubic points
 Compilation
 The code compiles correctly.
 No changes were made in the cmake configuration. A new file was added src/spline.h. It is the Cubic Spline interpolation implementation: a single .h file you can use splines instead of polynomials. It was a great suggestion from the classroom QA video. It works great.
@@ -169,7 +169,7 @@ Based on the provided code from the seed project, the path planning algorithms s
 
 The code consist of three parts:
 
-Prediction:(line 249 to 286)
+## Prediction:(line 249 to 286)
 This part of the code deal with the telemetry and sensor fusion data. It intents to reason about the environment. In the case, we want to know three aspects of it:
 
 Is there a car in front of us blocking the traffic.
@@ -177,14 +177,14 @@ Is there a car to the right of us making a lane change not safe.
 Is there a car to the left of us making a lane change not safe.
 These questions are answered by calculating the lane each other car is and the position it will be at the end of the last plan trajectory. A car is considered "dangerous" when its distance to our car is less than 30 meters in front or less than 20 meters behind us.
 
-Behavior:(line 289 to 311)
+## Behavior:(line 289 to 311)
 This part decides what to do:
 
 If we have a car in front of us, do we change lanes?
 Do we speed up or slow down?
 Based on the prediction of the situation we are in, this code increases the speed, decrease speed, or make a lane change when it is safe. Instead of increasing the speed at this part of the code, a speed_diff is created to be used for speed changes when generating the trajectory in the last part of the code. This approach makes the car more responsive acting faster to changing situations like a car in front of it trying to apply breaks to cause a collision.
 
-Trajectory line 313 to line 403
+## Trajectory line 313 to line 403
 This code does the calculation of the trajectory based on the speed and lane output from the behavior, car coordinates and past path points.
 
 First, the last two points of the previous trajectorys are used in conjunction three points at a far distance to initialize the spline calculation. To make the work less complicated to the spline calculation based on those points, the coordinates are transformed (shift and rotation) to local car coordinates .
